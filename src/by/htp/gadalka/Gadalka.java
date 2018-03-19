@@ -77,7 +77,7 @@ public class Gadalka {
 		for (Gadanie g : this.getGadaniya()) {
 			if (g.getGadanie().containsKey(name)) {
 				tmp = g;
-				return g;
+				return tmp;
 			} else {
 				System.out.println("Gadalka doesn't have Gadanie with name " + name);
 			}

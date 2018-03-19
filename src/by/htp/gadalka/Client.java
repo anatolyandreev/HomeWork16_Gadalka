@@ -10,15 +10,24 @@ public class Client {
 
 	}
 	
-	public void askGadalkaPogadat(String name, Gadalka g) {
+	public String askGadalkaPogadat(String name, Gadalka g) {
+		String result = null;
 		if (g.getGadaniyaNames().contains(name)) {
 			if (!g.isRomashkiEmpty()) {
-				g.getRomashki().get(0).getSize();
-				g.getGadanieByName(name);
+				String[] strArray = g.getGadanieByName(name).getGadanie().get(name);
+				if (strArray.length >= g.getRomashki().get(0).getSize()) {
+					result = strArray[g.getRomashki().get(0).getSize()];
+				} else {
+					int index = g.getRomashki().get(0).getSize() % strArray.length;
+					result = strArray[index];
+				}
+				for (int i = 0; i < g.getRomashki().get(0).getSize(); i++) {
+				}
 			}
 		} else {
 			System.out.println("Gadalka in not able gadat' by " + name);
 		}
+		return result;
 	}
 
 	public Date getDate() {

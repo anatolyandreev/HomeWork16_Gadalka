@@ -10,11 +10,11 @@ public class Romashka {
 
 	private Lepestok lepestok;
 	private List<Lepestok> lepestoks;
-	private static int lepestkovVRomvashke = 10;
+	private static final int lepestkovVRomvashke = 10;
 	private int size;
 
 	public Romashka() {
-		int size = randomWithRange(0, lepestkovVRomvashke);
+		size = randomWithRange(0, lepestkovVRomvashke);
 		lepestoks = new ArrayList(size);
 		for (int i= 0; i < size; i++) {
 			lepestoks.add(new Lepestok());

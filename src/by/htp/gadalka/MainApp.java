@@ -20,8 +20,8 @@ public class MainApp {
 		gadalka.addGadanie(gad3);
 		
 		Client client = new Client();
-		client.askGadalkaPogadat("work", gadalka);
-		
+		String res = client.askGadalkaPogadat("love", gadalka);
+		System.out.println(res);
 	}
 
 }
