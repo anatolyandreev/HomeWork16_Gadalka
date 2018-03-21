@@ -9,20 +9,28 @@ public class Client {
 	public Client() {
 
 	}
-	
+
 	public String askGadalkaPogadat(String name, Gadalka g) {
 		String result = null;
+		g.checkGadalkaMood();
 		if (g.getGadaniyaNames().contains(name)) {
-			if (!g.isRomashkiEmpty()) {
+			if (g.isGoodMood()) {
 				String[] strArray = g.getGadanieByName(name).getGadanie().get(name);
 				if (strArray.length >= g.getRomashki().get(0).getSize()) {
-					result = strArray[g.getRomashki().get(0).getSize()];
+					result = strArray[g.getRomashki().get(0).getSize() - 1];
+					g.getRomashki().remove(0);
 				} else {
 					int index = g.getRomashki().get(0).getSize() % strArray.length;
-					result = strArray[index];
+					if (index != 0) {
+						result = strArray[index - 1];
+						g.getRomashki().remove(0);
+					} else {
+						result = strArray[strArray.length - 1];
+						g.getRomashki().remove(0);
+					}
 				}
-				for (int i = 0; i < g.getRomashki().get(0).getSize(); i++) {
-				}
+			} else {
+				result = "Gadalka has no Romashek, that's sad :(\n Good bye";
 			}
 		} else {
 			System.out.println("Gadalka in not able gadat' by " + name);
@@ -38,6 +46,4 @@ public class Client {
 		this.date = date;
 	}
 
-	
-	
 }

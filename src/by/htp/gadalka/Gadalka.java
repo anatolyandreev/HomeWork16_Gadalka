@@ -13,14 +13,41 @@ public class Gadalka {
 	private Set<Client> clients;
 	private List<Gadanie> gadaniya;
 	private List<String> gadaniyaNames;
+	private int romashekUGadalki;
+	private final static int maxRomashekUGadalki = 5;
 	
 	public Gadalka() {
-		romashki = new LinkedList<>();
+		setListOfRomashek();
+		setListOfGadanij();
 		clients = new HashSet<>();
-		gadaniya = new LinkedList<>();
 		gadaniyaNames = new ArrayList<>();
 	}
-
+	
+	public void setListOfGadanij() {
+		gadaniya = new LinkedList<>();
+		gadaniya.add(new Gadanie("work"));
+		gadaniya.add(new Gadanie("love"));
+		gadaniya.add(new Gadanie("fortune"));
+	}
+	
+	public void setListOfRomashek() {
+		romashekUGadalki = Romashka.randomWithRange(1, maxRomashekUGadalki);
+		romashki = new LinkedList();
+		int counter = 0;
+		while (counter < romashekUGadalki) {
+			romashki.add(new Romashka());
+			counter++;
+		}
+	}
+	
+	public void checkGadalkaMood() {
+		if (romashki.isEmpty()) {
+			setGoodMood(false);
+		} else {
+			setGoodMood(true);
+		}
+	}
+	
 	public boolean isGoodMood() {
 		return isGoodMood;
 	}
@@ -74,12 +101,13 @@ public class Gadalka {
 	
 	public Gadanie getGadanieByName(String name) {
 		Gadanie tmp = new Gadanie();
-		for (Gadanie g : this.getGadaniya()) {
+		for (Gadanie g : getGadaniya()) {
 			if (g.getGadanie().containsKey(name)) {
 				tmp = g;
 				return tmp;
 			} else {
-				System.out.println("Gadalka doesn't have Gadanie with name " + name);
+				//System.out.println("Gadalka doesn't have Gadanie with name " + name);
+				//return null;
 			}
 		}
 		return tmp;

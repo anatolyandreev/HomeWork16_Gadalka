@@ -10,18 +10,18 @@ public class Romashka {
 
 	private Lepestok lepestok;
 	private List<Lepestok> lepestoks;
-	private static final int lepestkovVRomvashke = 10;
+	private static final int maxlepestkovVRomvashke = 10;
 	private int size;
 
 	public Romashka() {
-		size = randomWithRange(0, lepestkovVRomvashke);
+		size = randomWithRange(1, maxlepestkovVRomvashke);
 		lepestoks = new ArrayList(size);
 		for (int i= 0; i < size; i++) {
 			lepestoks.add(new Lepestok());
 		}
 	}
 	
-	public int randomWithRange(int min, int max) {
+	public static int randomWithRange(int min, int max) {
 		int range = (max - min) + 1;
 		return (int) (Math.random() * range) + min;
 	}

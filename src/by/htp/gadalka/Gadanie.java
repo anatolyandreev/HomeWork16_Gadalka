@@ -16,11 +16,14 @@ public class Gadanie {
 		gadanie = new HashMap<>();
 		gadanieName = name;
 		if (name.equals("work")) {
-			gadanie.put(name, workVariants);
+			gadaniyeVariants = workVariants;
+			gadanie.put(name, gadaniyeVariants);
 		} else if (name.equals("love")) {
-			gadanie.put(name, loveVariants);
+			gadaniyeVariants = loveVariants;
+			gadanie.put(name, gadaniyeVariants);
 		} else if (name.equals("fortune")) {
-			gadanie.put(name, fortuneVariants);
+			gadaniyeVariants = fortuneVariants;
+			gadanie.put(name, gadaniyeVariants);
 		} else {
 			System.out.println("enter name for 'gadanie': work, love or fortune");
 		}
@@ -51,6 +54,18 @@ public class Gadanie {
 
 	public void setGadanie(HashMap<String, String[]> gadanie) {
 		this.gadanie = gadanie;
+	}
+
+	public static String[] getWorkvariants() {
+		return workVariants;
+	}
+
+	public static String[] getLovevariants() {
+		return loveVariants;
+	}
+
+	public static String[] getFortunevariants() {
+		return fortuneVariants;
 	}
 
 	
